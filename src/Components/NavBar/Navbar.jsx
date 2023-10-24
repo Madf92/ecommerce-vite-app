@@ -1,47 +1,32 @@
 import { NavLink } from "react-router-dom";
+import { linksLeft, linksRight } from "../../Pages/Routes/Routes";
+
+const activeStyle = ({ isActive }) => {
+    return isActive ? 'underline underline-offset-4' : null;
+};
 
 const NavBar = () => {
     return(
-        <nav className="flex justify-between items-center">
-            <ul>
-                <li>
+        <nav className="flex justify-between items-center fixed  w-full z-10 px-8 py-10 text-sm font-light">
+            <ul className="flex items-center gap-3">
+                <li className="font-semibold text-lg">
                     <NavLink to="/">Myshop</NavLink>
                 </li>
-                <li>
-                    <NavLink to="/">All</NavLink>
-                </li>
-                <li>
-                    <NavLink to="/Clothes">Clothes</NavLink>
-                </li>
-                <li>
-                    <NavLink to="/Electronics">Electronics</NavLink>
-                </li>
-                <li>
-                    <NavLink to="/Furniture">Furniture</NavLink>
-                </li>
-                <li>
-                    <NavLink to="/Toys">Toys</NavLink>
-                </li>
-                <li>
-                    <NavLink to="/Other">Other</NavLink>
-                </li>
+                {linksLeft.map((link, index) => (
+                    <li key={index}>
+                        <NavLink to={link.to} className={activeStyle}>{link.text}</NavLink>
+                    </li>
+                ))}
             </ul>
-            <ul>
-                <li>
+            <ul className="flex items-center gap-3">
+                <li className=" text-black/60">
                     MyEmail@Email.com
                 </li>
-                <li>
-                    <NavLink to="/my-orders">My Orders</NavLink>
-                </li>
-                <li>
-                    <NavLink to="/my-account">My Account</NavLink>
-                </li>
-                <li>
-                    <NavLink to="/sign-in">Sign In</NavLink>
-                </li>
-                <li>
-                    <NavLink to="/sign-in">🛒 0</NavLink>
-                </li>
+                {linksRight.map((link, index) => (
+                    <li key={index}>
+                        <NavLink to={link.to} className={activeStyle}>{link.text}</NavLink>
+                    </li>
+                ))}
             </ul>
         </nav>
     )
