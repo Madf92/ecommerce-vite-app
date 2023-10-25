@@ -1,8 +1,10 @@
-function Home() {
+import Card from "../../Components/Card/Card";
 
+function Home() {
     return (
-      <h1 className="bg-red-100">
+      <h1>
         Home
+        <Card />
       </h1>
     )
   }
